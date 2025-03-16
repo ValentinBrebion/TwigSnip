@@ -1,65 +1,77 @@
-# twigsnip README
+# TwigSnip - Extension VSCode for Twig Snippets
 
-This is the README for your extension "twigsnip". After writing up a brief description, we recommend including the following sections.
+Welcome to the ***TwigSnip*** extension for Visual Studio Code! This extension allows you to add common Twig snippets to improve your productivity when writing Twig templates.
 
-## Features
+## Fonctionnalités
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+### 1. **Tags Twig**
+This extension provides snippets for the most commonly used Twig tags, including:
+- `for` : Iterative loops
+- `if` : Conditions
+- `set` : Variable declaration
+- `extends` : Template inheritance
+- `include` : Template inclusion
+- `block` : Blocks definition
 
-For example if there is an image subfolder under your extension project workspace:
+### 2. **Filtres Twig**
+Adds common filters to your Twig templates, including :
+- `|upper` : Convert to uppercase
+- `|lower` : Convert to lowercase
+- `|date` : Format a date
 
-\!\[feature X\]\(images/feature-x.png\)
+## Installation
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+1. Open **Visual Studio Code**.
+2. Go to the Extensions section by clicking on the Extensions icon in the sidebar (or press `Ctrl+Shift+X`).
+3. Research `TwigSnip`.
+4. Click ***Install*** to add the extension to your editor.
 
-## Requirements
+Once the extension is installed, you will be able to use the snippets in your Twig files
+## Utilisation
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+Snippets are automatically activated when you're working in a file with the .twig extension. Simply start typing the snippet keyword, and it will appear in the autocomplete suggestions list. For example
+- Tapez `{% if` pour obtenir le snippet de condition `if`.
+- Tapez `{% for` pour obtenir le snippet de boucle `for`.
 
-## Extension Settings
+## Exemples de Snippets
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+Here are some examples of available snippets:
 
-For example:
+### 1. **Snippet `if`**
+```twig
+{% if (condition) %}
+    $0
+{% endif %}
+```
 
-This extension contributes the following settings:
+### 2. **Snippet `for`**
+```twig
+{% for ${1:item} in ${2:items} %}
+    $0
+{% endfor %}
+```
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+### 3. **Snippet `set`**
+```twig
+{% set ${1:variable} = ${2:value} %}
+```
 
-## Known Issues
+### 4. **Snippet `upper`**
+```twig
+${1:value}|upper
+```
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+### 5. **Snippet `date`**
+```twig
+${1:value}|date("${2:"Y-m-d"}")
+```
 
-## Release Notes
+### Configuration
+No special configuration is required to use the extension. The snippets are ready to use immediately after installation.
 
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+### Notes de version
+## 0.0.1
+- Addition of the following snippets:
+  - Tags `for`, `if`, `set`
+  - Filters `upper`, `lower`, `date`
+  - Tags `extends`, `include`, `block`

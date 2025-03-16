@@ -2,6 +2,7 @@
   "name": "twigsnip",
   "displayName": "TwigSnip",
   "publisher": "TwigSnip",
+  "repository": "https://github.com/ValentinBrebion/TwigSnip.git",
   "description": "Autocomplétion et snippets pour Twig",
   "version": "0.0.1",
   "engines": {
