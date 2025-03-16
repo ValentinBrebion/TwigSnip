@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",  // Changez de "commonjs" à "ESNext"
+        "target": "ES2020",
+        "outDir": "out",  // Changez "src" en "out" pour une meilleure organisation
+        "lib": ["ES2020"],
+        "sourceMap": true,
+        "rootDir": "src",
+        "strict": true,
+        "esModuleInterop": true,  // Ajoutez ceci pour assurer la compatibilité des modules
+        "moduleResolution": "node"
+    },
+    "exclude": ["node_modules", ".vscode-test"]
+}
