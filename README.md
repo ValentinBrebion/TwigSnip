@@ -30,8 +30,8 @@ Once the extension is installed, you will be able to use the snippets in your Tw
 ## Utilisation
 
 Snippets are automatically activated when you're working in a file with the .twig extension. Simply start typing the snippet keyword, and it will appear in the autocomplete suggestions list. For example
-- Tapez `{% if` pour obtenir le snippet de condition `if`.
-- Tapez `{% for` pour obtenir le snippet de boucle `for`.
+- Tapez `{% if` to get confition snippet `if`.
+- Tapez `{% for` to get loop snippet `for`.
 
 ## Exemples de Snippets
 
@@ -70,7 +70,7 @@ ${1:value}|date("${2:"Y-m-d"}")
 No special configuration is required to use the extension. The snippets are ready to use immediately after installation.
 
 ### Notes de version
-## 0.0.1
+## 0.0.2
 - Addition of the following snippets:
   - Tags `for`, `if`, `set`
   - Filters `upper`, `lower`, `date`
