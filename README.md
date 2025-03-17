@@ -26,7 +26,7 @@ Adds common filters to your Twig templates, including :
 3. Research `TwigSnip`.
 4. Click ***Install*** to add the extension to your editor.
 
-Once the extension is installed, you will be able to use the snippets in your Twig files
+Once the extension is installed, you will be able to use the snippets in your Twig files 
 ## Usage
 
 Snippets are automatically activated when you're working in a file with the .twig extension. Simply start typing the snippet keyword, and it will appear in the autocomplete suggestions list. For example
