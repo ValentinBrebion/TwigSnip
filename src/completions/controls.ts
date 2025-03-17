@@ -1,5 +1,3 @@
-import * as vscode from 'vscode';
-
 export const controlsCompletions = [
     {
         label: 'if',

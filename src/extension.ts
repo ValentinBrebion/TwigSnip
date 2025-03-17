@@ -6,7 +6,7 @@ import { basicCompletions } from './completions/basic';
 export function activate(context: vscode.ExtensionContext) {
     // Enregistrement du provider d'autocomplétion
     const provider = vscode.languages.registerCompletionItemProvider('twig', {
-        provideCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
+        provideCompletionItems(/*document: vscode.TextDocument, position: vscode.Position*/) {
             // Combiner tous les types de complétions
             const allCompletions = [
                 ...controlsCompletions,
