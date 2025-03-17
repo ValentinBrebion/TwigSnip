@@ -5,17 +5,17 @@ exports.basicCompletions = [
     {
         label: 'extends',
         detail: 'Extend a template',
-        insertText: 'extends "${1:template.html.twig}"'
+        insertText: '{% extends "${1:template.html.twig}" %}'
     },
     {
         label: 'include',
         detail: 'Include a template',
-        insertText: 'include "${1:template.html.twig}"'
+        insertText: '{% include "${1:template.html.twig}" %}'
     },
     {
         label: 'block',
         detail: 'Define a block',
-        insertText: 'block ${1:name}\n\t$0\n{% endblock %}'
+        insertText: '{% block ${1:name} %}\n\t$0\n{% endblock %}'
     }
 ];
 //# sourceMappingURL=basic.js.map
