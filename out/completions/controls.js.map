@@ -1,0 +1,1 @@
+{"version":3,"file":"controls.js","sourceRoot":"","sources":["../../src/completions/controls.ts"],"names":[],"mappings":";;;AAEa,QAAA,mBAAmB,GAAG;IAC/B;QACI,KAAK,EAAE,IAAI;QACX,MAAM,EAAE,cAAc;QACtB,UAAU,EAAE,8CAA8C;KAC7D;IACD;QACI,KAAK,EAAE,KAAK;QACZ,MAAM,EAAE,YAAY;QACpB,UAAU,EAAE,oDAAoD;KACnE;IACD;QACI,KAAK,EAAE,KAAK;QACZ,MAAM,EAAE,sBAAsB;QAC9B,UAAU,EAAE,gCAAgC;KAC/C;CACJ,CAAC"}

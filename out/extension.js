@@ -25,27 +25,20 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deactivate = exports.activate = void 0;
 const vscode = __importStar(require("vscode"));
+const controls_1 = require("./completions/controls");
+const filters_1 = require("./completions/filters");
+const basic_1 = require("./completions/basic");
 function activate(context) {
     // Enregistrement du provider d'autocomplétion
     const provider = vscode.languages.registerCompletionItemProvider('twig', {
         provideCompletionItems(document, position) {
-            const twigKeywords = [
-                // Contrôles
-                { label: 'if', detail: 'Condition if', insertText: '{% if (${1:condition}) %}\n\t$0\n{% endif %}' },
-                { label: 'for', detail: 'loop for', insertText: 'for ${1:item} in ${2:items} %}\n\t$0\n{% endfor %}' },
-                { label: 'set', detail: 'Define a variable', insertText: 'set ${1:variable} = ${2:value}' },
-                // Filtres communs
-                { label: '|upper', detail: 'Convert to uppercase', insertText: '|upper' },
-                { label: '|lower', detail: 'Convert to lowercase', insertText: '|lower' },
-                { label: '|date', detail: 'Format a date', insertText: '|date(${1:"Y-m-d"})' },
-                { label: "|join", detail: "Join an array into a string with an empty separator by default", insertText: "|join('${1:}')"
-                },
-                // Tags de base
-                { label: 'extends', detail: 'Extend a template', insertText: 'extends "${1:template.html.twig}"' },
-                { label: 'include', detail: 'Include un template', insertText: 'include "${1:template.html.twig}"' },
-                { label: 'block', detail: 'Define a block', insertText: 'block ${1:name}\n\t$0\n{% endblock %}' },
+            // Combiner tous les types de complétions
+            const allCompletions = [
+                ...controls_1.controlsCompletions,
+                ...filters_1.filtersCompletions,
+                ...basic_1.basicCompletions
             ];
-            return twigKeywords.map(keyword => {
+            return allCompletions.map(keyword => {
                 const item = new vscode.CompletionItem(keyword.label);
                 item.detail = keyword.detail;
                 if (keyword.insertText) {

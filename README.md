@@ -2,7 +2,7 @@
 
 Welcome to the ***TwigSnip*** extension for Visual Studio Code! This extension allows you to add common Twig snippets to improve your productivity when writing Twig templates.
 
-## Fonctionnalités
+## Features
 
 ### 1. **Tags Twig**
 This extension provides snippets for the most commonly used Twig tags, including:
@@ -27,13 +27,13 @@ Adds common filters to your Twig templates, including :
 4. Click ***Install*** to add the extension to your editor.
 
 Once the extension is installed, you will be able to use the snippets in your Twig files
-## Utilisation
+## Usage
 
 Snippets are automatically activated when you're working in a file with the .twig extension. Simply start typing the snippet keyword, and it will appear in the autocomplete suggestions list. For example
-- Tapez `{% if` to get confition snippet `if`.
-- Tapez `{% for` to get loop snippet `for`.
+- write `if` to get confition snippet `if`.
+- Tapez `for` to get loop snippet `for`.
 
-## Exemples de Snippets
+## Examples of Snippets
 
 Here are some examples of available snippets:
 
