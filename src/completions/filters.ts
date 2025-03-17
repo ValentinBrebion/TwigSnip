@@ -2,22 +2,22 @@ import * as vscode from 'vscode';
 
 export const filtersCompletions = [
     {
-        label: '|upper',
+        label: 'upper',
         detail: 'Convert to uppercase',
         insertText: '|upper'
     },
     {
-        label: '|lower',
+        label: 'lower',
         detail: 'Convert to lowercase',
         insertText: '|lower'
     },
     {
-        label: '|date',
+        label: 'date',
         detail: 'Format a date',
         insertText: '|date(${1:"Y-m-d"})'
     },
     {
-        label: '|join',
+        label: 'join',
         detail: 'Join an array into a string with an empty separator by default',
         insertText: "|join('${1:}')"
     }

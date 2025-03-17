@@ -80,3 +80,7 @@ No special configuration is required to use the extension. The snippets are read
 - bug fixed:
     - for, if, set, extends, include and block fix format
     - update Code architecture
+
+## [0.0.4]
+- bug fixed:
+    - filter better autoCompletion
