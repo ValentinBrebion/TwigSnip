@@ -31,7 +31,7 @@ const basic_1 = require("./completions/basic");
 function activate(context) {
     // Enregistrement du provider d'autocomplétion
     const provider = vscode.languages.registerCompletionItemProvider('twig', {
-        provideCompletionItems(document, position) {
+        provideCompletionItems( /*document: vscode.TextDocument, position: vscode.Position*/) {
             // Combiner tous les types de complétions
             const allCompletions = [
                 ...controls_1.controlsCompletions,
