@@ -18,3 +18,9 @@
 ## [0.0.4]
 - bug fixed:
     - filter better autoCompletion
+  
+## [0.0.5]
+- add basic tags
+  - macro, import and from tags
+- add basic filters
+  - else if and else endblock tags
