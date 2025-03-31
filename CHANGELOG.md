@@ -23,4 +23,4 @@
 - add basic tags
   - macro, import and from tags
 - add basic filters
-  - else if and else tags
+  - else if and else endblock tags
