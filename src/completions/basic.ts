@@ -15,6 +15,11 @@ export const basicCompletions = [
         insertText: '{% block ${1:name} %}\n\t$0\n{% endblock %}'
     },
     {
+        label: 'endblock',
+        detail: 'Define an endblock',
+        insertText: '{% endblock %}'
+    },
+    {
         label: 'macro',
         detail: 'Define a macro',
         insertText: '{% macro ${1:name}(${2:params}) %}\n\t$0\n{% endmacro %}'
