@@ -31,16 +31,7 @@ jobs:
           # Extraire les notes de la version depuis CHANGELOG.md
           awk "/## \[${VERSION}\]/,/## \[/ {if (!/## \[${VERSION}\]/) print}" CHANGELOG.md | sed '$d' > release_notes.txt || true
           echo "changelog=$(cat release_notes.txt)" >> $GITHUB_OUTPUT
-      
-      - name: Create Tag
-        run: |
-          # Créer un tag git correspondant à la version extraite
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
-          git tag "V-${{ env.VERSION }}"
-          git push origin "V-${{ env.VERSION }}"
-
+          
       - name: Create GitHub Release
         id: create_release
         uses: actions/create-release@v1
