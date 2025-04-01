@@ -4,8 +4,7 @@ on:
   push:
     branches:
       - develop
-      - staging
-      - main
+      - master
 
 jobs:
   create_release:
@@ -16,11 +15,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Extract Version from Tag
+      - name: Extract Version from Tag or Branch
         id: extract_version
         run: |
-          # Extraire la version du tag (par exemple V-0.0.6 devient 0.0.6)
-          VERSION=${GITHUB_REF#refs/heads/}
+          if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
+            VERSION=${GITHUB_REF#refs/tags/V-}  # Extraire la version à partir d'un tag
+          else
+            VERSION=${GITHUB_REF#refs/heads/}  # Extraire la version à partir d'une branche
+          fi
           echo "VERSION=$VERSION" >> $GITHUB_ENV
           echo "Version extracted: $VERSION"
 
@@ -31,7 +33,15 @@ jobs:
           # Extraire les notes de la version depuis CHANGELOG.md
           awk "/## \[${VERSION}\]/,/## \[/ {if (!/## \[${VERSION}\]/) print}" CHANGELOG.md | sed '$d' > release_notes.txt || true
           echo "changelog=$(cat release_notes.txt)" >> $GITHUB_OUTPUT
-          
+
+      - name: Create Tag
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+          git tag "V-${{ env.VERSION }}"
+          git push origin "V-${{ env.VERSION }}"
+
       - name: Create GitHub Release
         id: create_release
         uses: actions/create-release@v1
