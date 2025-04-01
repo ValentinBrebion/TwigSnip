@@ -28,6 +28,7 @@ const vscode = __importStar(require("vscode"));
 const controls_1 = require("./completions/controls");
 const filters_1 = require("./completions/filters");
 const basic_1 = require("./completions/basic");
+const dateFilters_1 = require("./completions/dateFilters");
 function activate(context) {
     // Enregistrement du provider d'autocomplétion
     const provider = vscode.languages.registerCompletionItemProvider('twig', {
@@ -36,7 +37,8 @@ function activate(context) {
             const allCompletions = [
                 ...controls_1.controlsCompletions,
                 ...filters_1.filtersCompletions,
-                ...basic_1.basicCompletions
+                ...basic_1.basicCompletions,
+                ...dateFilters_1.dateCompletions
             ];
             return allCompletions.map(keyword => {
                 const item = new vscode.CompletionItem(keyword.label);
