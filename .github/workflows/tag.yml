@@ -4,7 +4,10 @@ on:
   push:
     branches:
       - develop
-      - master 
+      - staging
+      - main
+    tags:
+      - 'V-*'
 
 jobs:
   create_release:
@@ -19,28 +22,19 @@ jobs:
         id: extract_version
         run: |
           if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
-            VERSION=${GITHUB_REF#refs/tags/V-}  # Extraire la version à partir d'un tag
+            VERSION=${GITHUB_REF#refs/tags/V-}
           else
-            VERSION=${GITHUB_REF#refs/heads/}  # Extraire la version à partir d'une branche
+            VERSION=${GITHUB_REF#refs/heads/}
           fi
           echo "VERSION=$VERSION" >> $GITHUB_ENV
           echo "Version extracted: $VERSION"
 
-      - name: Extract Changelog
-        id: changelog
-        run: |
-          VERSION=${{ env.VERSION }}
-          # Extraire les notes de la version depuis CHANGELOG.md
-          awk "/## \[${VERSION}\]/,/## \[/ {if (!/## \[${VERSION}\]/) print}" CHANGELOG.md | sed '$d' > release_notes.txt || true
-          echo "changelog=$(cat release_notes.txt)" >> $GITHUB_OUTPUT
-
       - name: Create Tag
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
-          git tag "V-${{ env.VERSION }}"
-          git push origin "V-${{ env.VERSION }}"
+        uses: gittools/actions/git-tag@v1
+        with:
+          tag_name: "V-${{ env.VERSION }}"  # Utilise la version extraite
+          git_user_name: "github-actions"
+          git_user_email: "github-actions@github.com"
 
       - name: Create GitHub Release
         id: create_release
