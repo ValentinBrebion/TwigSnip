@@ -4,8 +4,7 @@ on:
   push:
     branches:
       - develop
-      - staging
-      - main
+      - master
     tags:
       - 'V-*'
 
@@ -30,11 +29,11 @@ jobs:
           echo "Version extracted: $VERSION"
 
       - name: Create Tag
-        uses: gittools/actions/git-tag@v1
+        uses: ad-m/github-push-action@v0.6.0
         with:
-          tag_name: "V-${{ env.VERSION }}"  # Utilise la version extraite
-          git_user_name: "github-actions"
-          git_user_email: "github-actions@github.com"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+          tag: "V-${{ env.VERSION }}"
 
       - name: Create GitHub Release
         id: create_release
