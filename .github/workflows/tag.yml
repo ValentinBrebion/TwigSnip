@@ -31,11 +31,10 @@ jobs:
           echo "Version extracted: $VERSION"
 
       - name: Create Tag
-        uses: ad-m/github-push-action@v0.6.0
+        uses: softprops/action-gh-release@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
-          tags: "V-${{ env.VERSION }}"
+          tag_name: "V-${{ env.VERSION }}"
 
       - name: Create GitHub Release
         id: create_release
