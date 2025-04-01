@@ -18,5 +18,20 @@ export const filtersCompletions = [
         label: 'join',
         detail: 'Join an array into a string with an empty separator by default',
         insertText: "|join('${1:}')"
+    },
+    {
+        label: 'length',
+        detail: 'Get the length of an array or string',
+        insertText: '|length'
+    },
+    {
+        label: 'first',
+        detail: 'Get the first element of an array',
+        insertText: '|first'
+    },
+    {
+        label: 'last',
+        detail: 'Get the last element of an array',
+        insertText: '|last'
     }
 ]; 

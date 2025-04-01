@@ -1,0 +1,53 @@
+name: Create Release
+
+on:
+  push:
+    branches:
+      - develop
+      - staging
+      - main
+
+jobs:
+  create_release:
+    name: Create Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Extract Version from Tag
+        id: extract_version
+        run: |
+          # Extraire la version du tag (par exemple V-0.0.6 devient 0.0.6)
+          VERSION=${GITHUB_REF#refs/tags/V-}
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "Version extracted: $VERSION"
+
+      - name: Extract Changelog
+        id: changelog
+        run: |
+          VERSION=${{ env.VERSION }}
+          # Extraire les notes de la version depuis CHANGELOG.md
+          awk "/## \[${VERSION}\]/,/## \[/ {if (!/## \[${VERSION}\]/) print}" CHANGELOG.md | sed '$d' > release_notes.txt || true
+          echo "::set-output name=changelog::$(cat release_notes.txt)"
+      
+      - name: Create Tag
+        run: |
+          # Créer un tag git correspondant à la version extraite
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git tag "V-${{ env.VERSION }}"
+          git push origin "V-${{ env.VERSION }}"
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: "V-${{ env.VERSION }}"
+          release_name: "Release V-${{ env.VERSION }}"
+          body: ${{ steps.changelog.outputs.changelog }}
+          draft: false
+          prerelease: false
