@@ -20,7 +20,7 @@ jobs:
         id: extract_version
         run: |
           # Extraire la version du tag (par exemple V-0.0.6 devient 0.0.6)
-          VERSION=${GITHUB_REF#refs/tags/V-}
+          VERSION=${GITHUB_REF#refs/heads/}
           echo "VERSION=$VERSION" >> $GITHUB_ENV
           echo "Version extracted: $VERSION"
 
@@ -30,13 +30,14 @@ jobs:
           VERSION=${{ env.VERSION }}
           # Extraire les notes de la version depuis CHANGELOG.md
           awk "/## \[${VERSION}\]/,/## \[/ {if (!/## \[${VERSION}\]/) print}" CHANGELOG.md | sed '$d' > release_notes.txt || true
-          echo "::set-output name=changelog::$(cat release_notes.txt)"
+          echo "changelog=$(cat release_notes.txt)" >> $GITHUB_OUTPUT
       
       - name: Create Tag
         run: |
           # Créer un tag git correspondant à la version extraite
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
           git tag "V-${{ env.VERSION }}"
           git push origin "V-${{ env.VERSION }}"
 
