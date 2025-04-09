@@ -34,4 +34,9 @@ export const basicCompletions = [
         detail: 'Import specific macros',
         insertText: '{% from "${1:macros.twig}" import ${2:macro_name} %}'
     },
+    {
+        label: '{{ }} with space',
+        detail: 'Insert {{ }} with space',
+        insertText: '{{ ${1:value} }} '
+    }
 ]; 

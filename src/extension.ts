@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import { controlsCompletions } from './completions/controls';
 import { filtersCompletions } from './completions/filters';
 import { basicCompletions } from './completions/basic';
+import { dateCompletions } from './completions/dateFilters';
 
 export function activate(context: vscode.ExtensionContext) {
     // Enregistrement du provider d'autocomplétion
@@ -11,7 +12,8 @@ export function activate(context: vscode.ExtensionContext) {
             const allCompletions = [
                 ...controlsCompletions,
                 ...filtersCompletions,
-                ...basicCompletions
+                ...basicCompletions,
+                ...dateCompletions
             ];
 
             return allCompletions.map(keyword => {
