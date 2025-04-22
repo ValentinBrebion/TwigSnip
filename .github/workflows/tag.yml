@@ -1,0 +1,38 @@
+# .github/workflows/tag.yml
+name: Create Tag from develop
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Get version from package.json
+        id: get-version
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Create and push Git tag if not exists
+        run: |
+          TAG_EXISTS=$(git ls-remote --tags origin "refs/tags/v${{ steps.get-version.outputs.version }}")
+          if [ -z "$TAG_EXISTS" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git tag -a "v${{ steps.get-version.outputs.version }}" -m "Release v${{ steps.get-version.outputs.version }}"
+            git push origin "v${{ steps.get-version.outputs.version }}"
+          else
+            echo "Tag v${{ steps.get-version.outputs.version }} already exists. Skipping."
+          fi
