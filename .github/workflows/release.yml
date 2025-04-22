@@ -1,18 +1,15 @@
-name: Tag and Release from develop
+name: Tag and Release
 
 on:
   push:
     branches:
-      - develop
+      - develop  # On écoute un push sur la branche master (prod)
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+"  # On écoute également les push sur les tags comme v0.0.7
 
 jobs:
   tag:
     runs-on: ubuntu-latest
-
-    outputs:
-      created: ${{ steps.set-created.outputs.created }}
-      version: ${{ steps.get-version.outputs.version }}
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -23,34 +20,27 @@ jobs:
           node-version: '20'
 
       - name: Get version from package.json
-        id: get-version
         run: |
           VERSION=$(node -p "require('./package.json').version")
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
 
       - name: Create and push Git tag if not exists
-        id: set-created
         run: |
-          VERSION=${{ steps.get-version.outputs.version }}
           TAG_EXISTS=$(git ls-remote --tags origin "refs/tags/v$VERSION")
-          
           if [ -z "$TAG_EXISTS" ]; then
-            echo "Tag doesn't exist. Creating and pushing tag v$VERSION..."
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
             git tag -a "v$VERSION" -m "Release v$VERSION"
             git push origin "v$VERSION"
             echo "created=true" >> $GITHUB_OUTPUT
           else
-            echo "Tag v$VERSION already exists"
+            echo "Tag already exists"
             echo "created=false" >> $GITHUB_OUTPUT
-          fi
 
   release:
     needs: tag
     if: needs.tag.outputs.created == 'true'
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
