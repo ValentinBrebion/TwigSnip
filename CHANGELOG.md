@@ -1,5 +1,11 @@
 # Change Log
 
+## [0.0.7]
+- Addition of the following snippets:
+  - Endtag `endif` and `endfor`
+- bug fixed:
+  - tags ` {{ }} with space` become : `mustache -> {{ }}`
+
 ## [0.0.6]
 - Addition of the following snippets:
   - Tags `{{ }} with space`
