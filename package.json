@@ -4,7 +4,7 @@
   "publisher": "TwigSnip",
   "repository": "https://github.com/ValentinBrebion/TwigSnip.git",
   "description": "Autocomplete and snippets for Twig",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "engines": {
     "vscode": "^1.98.0"
   },
