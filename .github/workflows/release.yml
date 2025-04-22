@@ -3,9 +3,9 @@ name: Tag and Release
 on:
   push:
     branches:
-      - develop  # On écoute un push sur la branche master (prod)
+      - develop 
     tags:
-      - "v[0-9]+.[0-9]+.[0-9]+"  # On écoute également les push sur les tags comme v0.0.7
+      - "v[0-9]+.[0-9]+.[0-9]+" 
 
 jobs:
   tag:
@@ -36,6 +36,7 @@ jobs:
           else
             echo "Tag already exists"
             echo "created=false" >> $GITHUB_OUTPUT
+          fi
 
   release:
     needs: tag
