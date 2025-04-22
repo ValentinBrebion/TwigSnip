@@ -33,15 +33,18 @@ jobs:
         run: |
           VERSION=${{ steps.get-version.outputs.version }}
           TAG_EXISTS=$(git ls-remote --tags origin "refs/tags/v$VERSION")
+          
           if [ -z "$TAG_EXISTS" ]; then
+            echo "Tag doesn't exist. Creating and pushing tag v$VERSION..."
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
             git tag -a "v$VERSION" -m "Release v$VERSION"
             git push origin "v$VERSION"
             echo "created=true" >> $GITHUB_OUTPUT
           else
-            echo "Tag already exists"
+            echo "Tag v$VERSION already exists"
             echo "created=false" >> $GITHUB_OUTPUT
+          fi
 
   release:
     needs: tag
