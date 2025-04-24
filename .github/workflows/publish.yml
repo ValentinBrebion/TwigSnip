@@ -45,4 +45,4 @@ jobs:
       - name: Publish to VS Code Marketplace
         run: vsce publish
         env:
-          VSCE_PAT: ${{ secrets.VSCE_TOKEN }} 
+          VSCE_PAT: ${{ secrets.VSCE_TOKEN }}
