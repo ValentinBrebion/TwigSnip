@@ -38,7 +38,7 @@ exports.basicCompletions = [
         insertText: '{% from "${1:macros.twig}" import ${2:macro_name} %}'
     },
     {
-        label: '{{ }} with space',
+        label: 'mustache',
         detail: 'Insert {{ }} with space',
         insertText: '{{ ${1:value} }} '
     }

@@ -15,9 +15,19 @@ export const controlsCompletions = [
         insertText: '{% else %}'
     },
     {
+        label: 'endif',
+        detail: 'End loop if',
+        insertText: '{% endif %}'
+    },
+    {
         label: 'for',
-        detail: 'Boucle for',
+        detail: 'loop for',
         insertText: '{% for ${1:item} in ${2:items} %}\n\t$0\n{% endfor %}'
+    },
+    {
+        label: 'endfor',
+        detail: 'End loop for',
+        insertText: '{% endfor %}'
     },
     {
         label: 'set',
