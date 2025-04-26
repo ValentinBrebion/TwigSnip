@@ -1,5 +1,10 @@
 # Change Log
 
+## [0.0.8]
+- Addition of the following snippets
+  -Tags `comments`, `merge`, `first`,`last`, `switch`, `trans`, `sort`
+
+
 ## [0.0.7]
 - Addition of the following snippets:
   - Endtag `endif` and `endfor`

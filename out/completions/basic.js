@@ -41,6 +41,26 @@ exports.basicCompletions = [
         label: 'mustache',
         detail: 'Insert {{ }} with space',
         insertText: '{{ ${1:value} }} '
-    }
+    },
+    {
+        label: 'comment',
+        detail: 'Twig comment',
+        insertText: '{# ${1:Comment} #}'
+    },
+    {
+        label: 'merge',
+        detail: 'Merge two arrays',
+        insertText: '{% set ${1:new_array} = ${2:array1}|merge(${3:array2}) %}'
+    },
+    {
+        label: 'first',
+        detail: 'Get the first element of an array or string',
+        insertText: '{{ ${1:array}|first }}'
+    },
+    {
+        label: 'last',
+        detail: 'Get the last element of an array or string',
+        insertText: '{{ ${1:array}|last }}'
+    },
 ];
 //# sourceMappingURL=basic.js.map
