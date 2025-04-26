@@ -33,5 +33,20 @@ export const controlsCompletions = [
         label: 'set',
         detail: 'Définir une variable',
         insertText: '{% set ${1:variable} = ${2:value} %}'
+    },
+    {
+        label: 'switch',
+        detail: 'Twig if / elseif / else structure',
+        insertText: `{% if \${1:variable} == '\${2:value1}' %}\n\t\$0\n{% elseif \${1:variable} == '\${3:value2}' %}\n\t\$4\n{% else %}\n\t\$5\n{% endif %}`
+    },
+    {
+        label: 'trans',
+        detail: 'Translate a string',
+        insertText: '{{ "${1:Hello world}"|trans }}'
+    },
+    {
+        label: 'sort',
+        detail: 'Sort an array',
+        insertText: '{{ ${1:array}|sort }}'
     }
 ]; 
