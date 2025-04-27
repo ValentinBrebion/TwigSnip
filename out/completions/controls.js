@@ -51,6 +51,36 @@ exports.controlsCompletions = [
         label: 'sort',
         detail: 'Sort an array',
         insertText: '{{ ${1:array}|sort }}'
+    },
+    {
+        label: 'defined',
+        detail: 'Check if a variable is defined',
+        insertText: '{% if ${1:variable} is defined %}\n\t$0\n{% endif %}'
+    },
+    {
+        label: 'empty',
+        detail: 'Check if a variable is empty',
+        insertText: '{% if ${1:variable} is empty %}\n\t$0\n{% endif %}'
+    },
+    {
+        label: 'sameas',
+        detail: 'Strictly compare two variables',
+        insertText: '{% if ${1:var1} is same as(${2:var2}) %}\n\t$0\n{% endif %}'
+    },
+    {
+        label: 'iterable',
+        detail: 'Check if a variable is iterable',
+        insertText: '{% if ${1:variable} is iterable %}\n\t$0\n{% endif %}'
+    },
+    {
+        label: 'ternary',
+        detail: 'Twig inline if (ternary operator)',
+        insertText: '{{ ${1:condition} ? ${2:"yes"} : ${3:"no"} }}'
+    },
+    {
+        label: 'inArray',
+        detail: 'Check if a value is in an array',
+        insertText: '{% if ${1:variable} in ["${2:value1}", "${3:value2}"] %}\n\t$0\n{% endif %}'
     }
 ];
 //# sourceMappingURL=controls.js.map
