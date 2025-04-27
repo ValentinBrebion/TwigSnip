@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.0.9]
+- Addition of the following snippets
+  -Tags `defined`, `empty`, `sameas`,`iterable`, `ternary`, `inArray`
+
 ## [0.0.8]
 - Addition of the following snippets
   -Tags `comments`, `merge`, `first`,`last`, `switch`, `trans`, `sort`
