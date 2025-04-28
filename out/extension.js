@@ -29,11 +29,16 @@ const controls_1 = require("./completions/controls");
 const filters_1 = require("./completions/filters");
 const basic_1 = require("./completions/basic");
 const dateFilters_1 = require("./completions/dateFilters");
+const Markdown_1 = require("./components/Markdown");
 function activate(context) {
-    // Enregistrement du provider d'autocomplétion
+    const config = vscode.workspace.getConfiguration();
+    const includeLanguages = config.get('emmet.includeLanguages') || {};
+    if (!includeLanguages['twig']) {
+        includeLanguages['twig'] = 'html';
+        config.update('emmet.includeLanguages', includeLanguages, vscode.ConfigurationTarget.Global);
+    }
     const provider = vscode.languages.registerCompletionItemProvider('twig', {
         provideCompletionItems( /*document: vscode.TextDocument, position: vscode.Position*/) {
-            // Combiner tous les types de complétions
             const allCompletions = [
                 ...controls_1.controlsCompletions,
                 ...filters_1.filtersCompletions,
@@ -42,7 +47,8 @@ function activate(context) {
             ];
             return allCompletions.map(keyword => {
                 const item = new vscode.CompletionItem(keyword.label);
-                item.detail = keyword.detail;
+                const markdown = new Markdown_1.Markdown(keyword.detail, keyword.example);
+                item.documentation = markdown.toMarkdown();
                 if (keyword.insertText) {
                     item.insertText = new vscode.SnippetString(keyword.insertText);
                 }
