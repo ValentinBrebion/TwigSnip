@@ -68,19 +68,3 @@ ${1:value}|date("${2:"Y-m-d"}")
 
 ### Configuration
 No special configuration is required to use the extension. The snippets are ready to use immediately after installation.
-
-### Notes de version
-## [0.0.2]
-- Addition of the following snippets:
-  - Tags `for`, `if`, `set`
-  - Filters `upper`, `lower`, `date`
-  - Tags `extends`, `include`, `block`
-
-## [0.0.3]
-- bug fixed:
-    - for, if, set, extends, include and block fix format
-    - update Code architecture
-
-## [0.0.4]
-- bug fixed:
-    - filter better autoCompletion

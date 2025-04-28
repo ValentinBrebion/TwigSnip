@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.0.0]
+- Add new features !
+  - set HTML emet by default in twig file
+  - format command for your twig files !
+  - update UI description for snippets
+
 ## [0.0.9]
 - Addition of the following snippets
   -Tags `defined`, `empty`, `sameas`,`iterable`, `ternary`, `inArray`
