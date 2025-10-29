@@ -18,6 +18,21 @@
   ],
   "main": "./out/extension.js",
   "contributes": {
+    "commands": [
+      {
+        "command": "twigsnip.previewTwig",
+        "title": "TwigSnip | Preview Twig"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "twigsnip.previewTwig",
+          "when": "resourceLangId == twig",
+          "group": "navigation"
+        }
+      ]
+    },
     "configurationDefaults": {
       "[twig]": {
         "emmet.includeLanguages": {

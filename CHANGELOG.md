@@ -2,7 +2,8 @@
 
 ## [1.0.1]
 - Add file
-  - Add image for vsCode extension
+  - Add logo for vsCode extension
+  - add preview command for twig file
 
 ## [1.0.0]
 - Add new features !
