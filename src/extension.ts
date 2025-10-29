@@ -4,8 +4,26 @@ import { filtersCompletions } from './completions/filters';
 import { basicCompletions } from './completions/basic';
 import { dateCompletions } from './completions/dateFilters';
 import { Markdown } from './components/Markdown';
+import { PreviewManager } from './preview/PreviewManager';
 
 export function activate(context: vscode.ExtensionContext) {
+    const previewManager = PreviewManager.getInstance();
+    
+    // Enregistrer la commande de prévisualisation
+    const previewCommand = vscode.commands.registerCommand('twigsnip.previewTwig', (uri: vscode.Uri) => {
+        const activeEditor = vscode.window.activeTextEditor;
+        if (!activeEditor && !uri) {
+            vscode.window.showErrorMessage('Aucun fichier Twig ouvert');
+            return;
+        }
+        
+        const targetUri = uri || activeEditor?.document.uri;
+        if (targetUri) {
+            previewManager.showPreview(targetUri);
+        }
+    });
+
+    // Configuration Emmet pour Twig
     const config = vscode.workspace.getConfiguration();
     const includeLanguages = config.get<{ [key: string]: string }>('emmet.includeLanguages') || {};
 
@@ -38,7 +56,10 @@ export function activate(context: vscode.ExtensionContext) {
         }
     });
 
-    context.subscriptions.push(provider);
+    context.subscriptions.push(
+        provider,
+        previewCommand
+    );
 }
 
 export function deactivate() {}

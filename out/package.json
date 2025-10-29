@@ -1,0 +1,78 @@
+{
+    "name": "twigsnip",
+    "displayName": "TwigSnip",
+    "publisher": "ValTech",
+    "repository": "https://github.com/ValentinBrebion/TwigSnip.git",
+    "description": "Autocomplete and snippets for Twig",
+    "version": "1.0.1",
+    "icon": "images/twigsniplogo.png",
+    "engines": {
+        "vscode": "^1.98.0"
+    },
+    "categories": [
+        "Snippets",
+        "Programming Languages"
+    ],
+    "activationEvents": [
+        "onLanguage:twig"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "twigsnip.previewTwig",
+                "title": "TwigSnip | Preview Twig"
+            }
+        ],
+        "menus": {
+            "editor/context": [
+                {
+                    "command": "twigsnip.previewTwig",
+                    "when": "resourceLangId == twig",
+                    "group": "navigation"
+                }
+            ]
+        },
+        "configurationDefaults": {
+            "[twig]": {
+                "emmet.includeLanguages": {
+                    "twig": "html"
+                }
+            }
+        },
+        "snippets": [
+            {
+                "language": "twig",
+                "path": "./snippets/snippets.code-snippets"
+            }
+        ],
+        "languages": [
+            {
+                "id": "twig",
+                "aliases": [
+                    "Twig",
+                    "twig"
+                ],
+                "extensions": [
+                    ".twig"
+                ]
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "lint": "eslint \"src/**/*.{ts,js}\""
+    },
+    "devDependencies": {
+        "@types/node": "^16.x.x",
+        "@types/vscode": "^1.98.0",
+        "@typescript-eslint/eslint-plugin": "^5.x.x",
+        "@typescript-eslint/parser": "^5.x.x",
+        "eslint": "^8.57.1",
+        "globals": "^16.0.0",
+        "typescript": "^4.x.x",
+        "typescript-eslint": "^8.26.1"
+    }
+}
