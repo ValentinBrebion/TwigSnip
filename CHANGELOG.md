@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.0.1]
+- Add file
+  - Add image for vsCode extension
+
 ## [1.0.0]
 - Add new features !
   - set HTML emet by default in twig file
