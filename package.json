@@ -1,7 +1,7 @@
 {
   "name": "twigsnip",
   "displayName": "TwigSnip",
-  "publisher": "ValTech",
+  "publisher": "TwigSnip",
   "repository": "https://github.com/ValentinBrebion/TwigSnip.git",
   "description": "Autocomplete and snippets for Twig",
   "version": "1.0.1",
