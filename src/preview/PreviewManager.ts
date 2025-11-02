@@ -49,7 +49,6 @@ export class PreviewManager {
 
         this.updateContent(document);
 
-        // Mise à jour en temps réel
         const changeDocumentSubscription = vscode.workspace.onDidChangeTextDocument(e => {
             if (e.document.uri.toString() === document.uri.toString()) {
                 this.updateContent(document);
@@ -125,7 +124,7 @@ export class PreviewManager {
                     </div>
                     <p><small>La prévisualisation se met à jour automatiquement lors de la modification du fichier.</small></p>
                     <div class="status-bar">
-                        <span>Twig.js v${pkg.version}</span>
+                        <span>TwigSnip v${pkg.version}</span>
                         <span id="status">Prêt</span>
                     </div>
                 </div>

@@ -1,23 +1,49 @@
 # TwigSnip - Extension VSCode for Twig Snippets
 
-Welcome to the ***TwigSnip*** extension for Visual Studio Code! This extension allows you to add common Twig snippets to improve your productivity when writing Twig templates.
+Welcome to the ***TwigSnip*** extension for Visual Studio Code! This extension allows you to add common Twig snippets to improve your productivity when writing Twig templates and preview your Twig files.
 
 ## Features
+### Twig Preview
 
-### 1. **Tags Twig**
-This extension provides snippets for the most commonly used Twig tags, including:
-- `for` : Iterative loops
-- `if` : Conditions
-- `set` : Variable declaration
-- `extends` : Template inheritance
-- `include` : Template inclusion
-- `block` : Blocks definition
+You can preview your Twig file by Ctrl+Shift+P (Windows) or Cmd+Shift+P (Mac) and typing `TwigSnip | Preview Twig`.
 
-### 2. **Filtres Twig**
-Adds common filters to your Twig templates, including :
-- `|upper` : Convert to uppercase
-- `|lower` : Convert to lowercase
-- `|date` : Format a date
+### 1. **Twig Tags**
+
+| Snippet    | Description                          |
+|------------|--------------------------------------|
+| `if`       | Conditional statement               |
+| `elseif`   | Else if condition                   |
+| `else`     | Else condition                      |
+| `endif`    | End if block                        |
+| `for`      | Iterative loops                     |
+| `endfor`   | End for loop                        |
+| `set`      | Define a variable                   |
+| `extends`  | Template inheritance                |
+| `include`  | Include a template                  |
+| `block`    | Define a block                      |
+| `endblock` | End a block definition              |
+| `macro`    | Define a macro                      |
+| `import`   | Import macros                       |
+| `from`     | Import specific macros              |
+| `comment`  | Twig comment                        |
+
+### 2. **Twig Filters**
+
+| Filter      | Description                                       |
+|-------------|---------------------------------------------------|
+| `upper`     | Convert to uppercase                             |
+| `lower`     | Convert to lowercase                             |
+| `date`      | Format a date                                    |
+| `join`      | Join an array into a string with a separator     |
+| `length`    | Get the length of an array or string             |
+| `first`     | Get the first element of an array or string      |
+| `last`      | Get the last element of an array or string       |
+| `timestamp` | Get the Unix timestamp of a date                 |
+| `strtotime` | Convert a string to a date                       |
+| `time_diff` | Get time difference from now in seconds          |
+| `sort`      | Sort an array                                    |
+| `merge`     | Merge two arrays                                 |
+| `trans`     | Translate a string                               |
 
 ## Installation
 
