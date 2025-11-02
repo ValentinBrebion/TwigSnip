@@ -4,7 +4,7 @@ exports.controlsCompletions = void 0;
 exports.controlsCompletions = [
     {
         label: 'if',
-        detail: 'Condition if',
+        detail: 'Conditional statement',
         insertText: '{% if (${1:condition}) %}\n\t$0\n{% endif %}',
         example: `{% if user.isLoggedIn %}\n\t<p>Welcome back, {{ user.name }}!</p>\n{% endif %}`
     },

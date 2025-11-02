@@ -1,9 +1,11 @@
 # Change Log
 
-## [1.0.1]
+## [2.0.1]
 - Add file
   - Add logo for vsCode extension
-  - add preview command for twig file 
+  - Add preview command for twig file 
+  - Patch some wrong translation
+  - Add button in topbar for preview
 
 ## [1.0.0]
 - Add new features !
